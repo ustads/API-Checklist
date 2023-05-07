@@ -1,0 +1,236 @@
+Section 1: Authentication & Authorization
+
+Authentication and authorization vulnerabilities are widely recognized as one of the most common clusters of API threats.
+
+Authentication mechanisms act to validate the identity of your API users, while authorization measures ensure that only authorized users gain access to the data and functionalities of your API based on the privileges granted to their users.
+
+Below, we list the steps you need to take to protect your API from authentication and authorization vulnerabilities.
+
+Authentication & Authorization Checklist:
+
+    Avoid Basic Authentication
+    Implement Two-Factor Authentication
+    Enforce Transport Layer Security (TLS)
+
+1. Avoid Basic Authentication
+
+While Basic Authentication is easy and straightforward, we don’t recommend you rely on it due to its inherent security flaws. Instead, consider using API keys, OAuth, or OpenID as much safer substitutes for a standard combination of a login and password.
+
+If you must rely on Basic Authentication, credentials are the first line of protection against any unauthorized access to an API. Implementing a strong password policy is a simple yet powerful security measure you can enforce right away without major costs involved.
+
+Some best practice tips for a strong password policy include:
+
+    At least ten characters long
+    A combination of uppercase letters, lowercase letters, digits, and special characters
+    Do not belong to the list of the most common passwords
+    Do not include any personal information that can be used to identify an API consumer- birth dates, for example
+
+2. Implement Two-Factor Authentication
+
+Two-factor authentication (2FA or TFA) is a method of user validation where an API consumer needs to verify their identity in two distinct ways before they can access their account.
+
+For example, when a user attempts to log in using the regular username and password, the system also requests verification via email, phone, and sometimes biometrics. This second layer of authentication creates more work for the hacker and sometimes makes it impossible for them to gain access at all. Say a login triggers a code sent to a user’s phone. When that's the case, a hacker would need both the password and physical possession of the device to gain unauthorized access.
+
+Implementing 2FA prevents cybercriminals from breaking in even when login credentials have been compromised.
+3. Enforce Transport Layer Security (TLS)
+
+Transport Layer Security (TLS) encrypts any data in transit between the client and the server, preventing unauthorized third parties from hijacking or modifying the message along the way. This protects your APIs from a massive range of vulnerabilities such as eavesdropping attacks (aka man-in-the-middle attacks).
+
+The TLS protocol ensures all information sent from the client remains out of reach to anyone other than the intended recipient.
+
+Any web service without TLS should be considered insecure as it exposes sensitive user data such as passwords or credit card information to cyber attacks.
+
+Read More: API Terminology: A Complete List of Terms for Beginners.
+Section 2: Access Control
+
+Attackers don’t even need to sign up to wreak havoc when an API has access control issues.
+
+For that reason, it's critical to make sure they can't access the functionalities and data that can be used to achieve malicious goals regardless of how they interact with your API.
+
+To help you get started, consider implementing the following security measures to mitigate the risk and severity of data breaches.
+
+Access Control Checklist:
+
+    Implement a Zero-Trust Security Model
+    Implement API Rate Limiting
+    Address Excessive Data Exposure Issues
+
+1. Implement a Zero-Trust Security Model
+
+Traditionally, certain user groups - like admins or employees - get a certain amount of trust within an API infrastructure by default. However, with hackers coming up with more ways to penetrate the defense lines of APIs each year, this approach failed.
+
+As a countermeasure, the zero-trust security model represents a paradigm shift from placing a certain amount of unconditional trust in some user groups to eliminating the concept of trust when it comes to API governance. In other words, this model means that no entity - be it within or outside the organization - should be trusted unless they’ve been properly authenticated and authorized.
+
+But it doesn’t stop just there. Since each user is considered a potential security threat, they are being constantly monitored for any malicious activity even after getting verified by your APIs.
+
+Apart from preventing hackers from causing damage if they gain access to one of your user accounts, this approach also prevents insider threats, which account for roughly 60 percent of data breaches.
+
+From malicious intent to negligence and human error, your employees are capable of exposing your system for hackers to go in and wreak havoc on your organization. And the zero-trust model is the first step towards preventing that from happening.
+2. Implement API Rate Limiting
+
+Providing unlimited access to your API for every consumer is a recipe for disaster, opening it up to myriad ways for hackers to exploit it - especially as you grow your active user base.
+
+API rate limiting refers to a set of measures aimed at managing API traffic by enforcing certain limitations and restrictions related to:
+
+    The number of requests a given user or IP address can send over a certain period of time
+    The number of requests your API can process at any given time
+    Any additional fees related to sending new API calls once the limit has been exceeded
+    The way an API reacts once any of the rate limits have been reached - from redirecting the user to an error page to triggering an alarm to the development and security teams
+
+The primary goal of rate limiting is to protect your APIs from DDoS and brute force attacks, both of which entail submitting a large number of requests within a short timeframe.
+
+It prevents users from making too many calls at once or making too many calls in a short time, which can overload the API and cause the system to crash.
+
+As an added benefit, you lay a solid foundation for seamlessly scaling up your APIs, improving the overall performance and stability of your application.
+
+To get started, consider the following four rate limiting strategies you can adopt to manage your resources without interfering with user experience effectively:
+
+    Leaky Bucket: an algorithm that approaches rate limiting with queues -first in, first out
+    Token Bucket: an algorithm that approaches rate limiting with fixed capacity buckets
+    Fixed Window: time-based rate limiting algorithm that processes requests based on time limits
+    Sliding Log: time-stamped logs for each request
+
+3. Address Excessive Data Exposure Issues
+
+Excessive data exposure is an OWASP vulnerability that stems from giving users information outside what they primarily need to execute a task.
+
+Some common examples of excessive data exposure include leaving login credentials in the URL string and having your error page expose the build and version of your server. This exposed data allows hackers to abuse vulnerabilities like these to understand how your API works from within.
+
+When hackers understand how your API works, they become more effective at finding loopholes and have better chances to reach their malicious goals.
+
+For instance, if a hacker knows that your servers run on Apache, this alone makes their job much easier since they can proceed to try penetrating your defense lines using publicly known Apache vulnerabilities.
+
+To prevent scenarios like this from even happening to you, examine the following elements of your API where most excessive data exposure vulnerabilities typically occur:
+
+    Error pages
+    URL strings
+    API responses
+    Data in transit
+    Data at rest
+    The client - especially when it comes to filtering data
+
+To make APIs safer for your users, you should also stop clients from filtering data, minimize return responses, and adopt OpenAPI and RAML standards to limit the exposure of excessive data.
+
+Read More: API Security: How to Add the Sec in DevSecOps
+api security checklist
+Section 3: Input & Output
+
+Any user input can be potentially used to bypass your API security systems since it’s often used to call other code.
+
+In this section, we cover the essential security measures to make it harder for hackers to manipulate user input to reach their malicious goals.
+
+Access Control Checklist:
+
+    Always Validate User Input
+    Enforce HTTP Methods
+    Conduct API Fuzz Input Testing
+    Test for SQL Injections
+    Restrict Parameter Tampering
+
+1. Always Validate User Input
+
+We can’t stress this enough - you should treat any user input as a tool that hackers can potentially use to gain unauthorized access to the functionalities and data of your API.
+
+That’s why it’s essential to validate all user input regardless of the privileges assigned to the user submitting it - invalid user data should trigger an error and should not be processed by an API while valid input should meet all of the criteria specified by developers.
+
+Armed with this approach, analyze where and how your API consumers can submit user input. Once there, proceed to limit the fields and data types they can use to a bare minimum without hurting the UX or scaling back your API functionality.
+2. Enforce HTTP Methods
+
+Enforcing HTTP methods refers to the practice of restricting the range of HTTP methods a user can use to perform a certain task.
+
+For instance, your API consumers should only be able to use the GET method when requesting to check their account balance. In this case, if developers don’t restrict HTTP methods, a user can hypothetically use the POST, PUT, or PATCH method to modify their account balance without your permission.
+
+This simple example demonstrates the importance of double-checking which HTTP methods users can use while performing a certain task.
+
+Any operations that do not match the allowed methods should result in a 405 Method Not Allowed response.
+3. Conduct API Fuzz Input Testing
+
+Fuzz testing is a technique that feeds an API large amounts of typically malformed data in an attempt to expose vulnerabilities within your API.
+
+The goal is to trigger and identify unexpected API responses that can be exploited by hackers or crash the system.
+
+This straightforward yet powerful API test ensures the stability of your API and helps you polish up the design for better performance.
+
+Here’s the list of the tools you can use to conduct API fuzz testing:
+
+    Fuzzapi
+    Wapiti
+    Wfuzz
+
+4. Test for SQL Injections
+
+As one of the traditional ways for hackers to penetrate systems, SQL injections refer to the practice of manipulating database queries to achieve a malicious outcome - be it stealing sensitive data or gaining editing privileges.
+
+Using SQL injection testing, you can determine whether it is possible to inject data into an API to cause it to run a user-controlled SQL query in a database and potentially access and manipulate sensitive data.
+
+You can use on - or the combination of - the following tools to test SQL injections:
+
+    SQLmap
+    SQLninja
+    SQLSus
+    APIsec
+
+5. Restrict Parameter Tampering
+
+A parameter tampering attack refers to manipulating URL parameters or form field data to get unauthorized access to the data and functionalities of an API that a given user is not supposed to see.
+
+The following elements are the most common targets of parameter tampering attacks.
+
+    Cookies
+    Form fields
+    URL query strings
+    HTTP headers
+
+For instance, when an application relies on hidden fields to store status or technical data, a hacker can identify and modify those fields to break in.
+
+Here are some of the security measures you can implement to prevent parameter tampering attacks:
+
+    Using regex to validate data
+    Removing parameters from URL query strings
+    Setting up a whitelist of formats for an API
+    Encrypting session cookies
+
+Read More: Critical API Security Risks: Understanding Cyber Threats to APIs.
+Section 4: API Security Testing
+
+Every feature or functionality of your API is a potential vulnerability that hackers can exploit.
+
+After you have successfully made it through the past three phases mapped out above, you need to ensure that your API adequately responds to standard API tests.
+
+While most of the tests mentioned below are not aimed at improving API security directly, each of them can point out hidden technical issues and vulnerabilities that cybercriminals can use to steal your sensitive data to hurt your user base.
+
+API Security Checklist:
+
+    Conduct Functional Tests
+    Carry out Performance Tests
+    Execute a Penetration Test
+    Run a Vulnerability Scan
+
+We covered the process in its entirety in our guide to the API testing process, so we’ll only cover the key ideas below.
+1. Functional Testing
+
+The goal of functional testing is to examine how different elements of your API work both in unison and in isolation to ensure your system works like clockwork.
+
+Some of the functional tests include:
+
+    Smoke testing analyzes the most critical functionalities to understand whether the current build is stable.
+    Sanity testing verifies the stability of new features and functionalities.
+    Regression testing confirms that any new changes to the source code - from rolling out security patches to implementing new functionalities - do not negatively impact or create vulnerabilities within the existing functionalities
+    Integration testing analyzes how different functional modules work together.
+    Usability testing helps uncover any user-facing technical issues hurting the UX.
+
+2. Performance Testing
+
+Performance testing analyzes how your API works under stress when a massive spike of API traffic overloads the system.
+
+    Load and stress testing ensures that an API can withstand a large amount of API traffic without crashing the system.
+    Volume and capacity testing tries to identify the performance limits of your API, analyzing the number of requests the system can process while maintaining high performance levels.
+    Reliability testing identifies how much time it takes for an API to recover after an incident has occurred - and whether it can autonomously deal with it without the need to involve API developers.
+
+3. Penetration Testing & Vulnerability Scans
+
+Finally, once you have followed the entire checklist, you need to test your entire API using the two most common API security testing methods: a penetration test and a vulnerability scan.
+
+A penetration test (also called ethical hacking) simulates an API attack to uncover vulnerabilities that hackers can take advantage of - while a vulnerability scan analyzes your API across the most popular API security loopholes using industry-standard guidelines such as the OWASP Top 10 API Security list.
+
+Read More: What Is OWASP API Security Top 10 & Why It's Important
